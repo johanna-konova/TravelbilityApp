@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { generateStarIcons } from '../../../utils/property-utils';
 
-import styles from './My-Properties.module.css';
+import styles from './User-Properties.module.css';
 
 export default function PropertyShortView({ propertyData }) {
     return (

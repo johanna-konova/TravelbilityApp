@@ -2,7 +2,7 @@ import { Container, Row } from "react-bootstrap";
 
 import PropertyShortView from "./Property-Short-View";
 
-export default function MyPropertiesContainer({ propertiesDataByOwnerId }) {
+export default function UserPropertiesContainer({ propertiesDataByOwnerId }) {
     return (
         <>
             <Container>

@@ -1,7 +1,7 @@
 import { Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-import styles from './My-Properties.module.css';
+import styles from './User-Properties.module.css';
 
 export default function NoProperties() {
     return (

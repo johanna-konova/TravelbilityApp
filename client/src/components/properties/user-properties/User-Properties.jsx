@@ -2,13 +2,13 @@ import React from 'react';
 import { Container, Spinner } from 'react-bootstrap';
 
 import NoProperties from './No-Properties';
-import MyPropertiesContainer from './My-Properties-Container';
+import UserPropertiesContainer from './User-Properties-Container';
 
 import { useAuthContext } from '../../../contexts/Auth-Context';
 import { useBasicGetFetch } from '../../../hooks/use-basic-get-fetch';
 import { getByOwnerId } from '../../../services/propertiesServices';
 
-export default function MyProperty() {
+export default function UserProperties() {
     const { id } = useAuthContext();
     const {
         data: propertiesDataByOwnerId,
@@ -20,7 +20,7 @@ export default function MyProperty() {
                 {isPropertiesDataByOwnerIdLoaded
                     ? propertiesDataByOwnerId.length === 0
                         ? <NoProperties />
-                        : <MyPropertiesContainer propertiesDataByOwnerId={propertiesDataByOwnerId} />
+                        : <UserPropertiesContainer propertiesDataByOwnerId={propertiesDataByOwnerId} />
                     : <Spinner />
                 }
             </Container>

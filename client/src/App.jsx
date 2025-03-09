@@ -12,7 +12,7 @@ import LoginForm from "./components/auth-forms/Login-Form";
 import RegisterForm from "./components/auth-forms/Register-Form";
 import OurMission from "./components/Our-Mission";
 import PropertyDetailsContainer from "./components/property/property-details/Property-Details-Container";
-import MyProperty from "./components/property/my-properties/My-Properties";
+import UserProperties from "./components/properties/user-properties/User-Properties";
 import PropertyCreateEditForm from "./components/property/property-create-edit/Property-Create-Edit-Form";
 import Footer from "./components/Footer";
 import BackToTop from "./components/Back-To-Top";
@@ -49,7 +49,7 @@ function App() {
                             </PropertyContextProvider>
                         } />
 
-                        <Route path="/my-properties" element={<MyProperty />} />
+                        <Route path="/my-properties" element={<UserProperties />} />
                     </Route>
 
                 </Routes>
