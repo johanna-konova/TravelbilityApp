@@ -31,7 +31,7 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<LoginForm />} />
                     <Route path="/register" element={<RegisterForm />} />
-                    <Route path="/about-us" element={<AboutUs />} />
+                    <Route path="/our-mission" element={<AboutUs />} />
 
                     <Route path="/properties/:propertyId" element={
                         <PropertyContextProvider>

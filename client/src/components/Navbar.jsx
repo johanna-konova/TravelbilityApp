@@ -27,17 +27,11 @@ export default function Navbar() {
                             id="navbarCollapse"
                         >
                             <div className="navbar-nav ml-auto py-0">
-                                <Link to="/" className="nav-item nav-link active">
-                                    Home
+                                <Link to="/properties" className="nav-item nav-link">
+                                    Properties
                                 </Link>
-                                <Link to="/about-us" className="nav-item nav-link">
-                                    About
-                                </Link>
-                                <Link to="/service" className="nav-item nav-link">
-                                    Services
-                                </Link>
-                                <Link to="/package" className="nav-item nav-link">
-                                    Tour Packages
+                                <Link to="/our-mission" className="nav-item nav-link">
+                                    Our mission
                                 </Link>
                                 <Link to="/contact" className="nav-item nav-link">
                                     Contact
