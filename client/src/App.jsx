@@ -10,10 +10,10 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import LoginForm from "./components/auth-forms/Login-Form";
 import RegisterForm from "./components/auth-forms/Register-Form";
+import OurMission from "./components/Our-Mission";
 import PropertyDetailsContainer from "./components/property/property-details/Property-Details-Container";
 import MyProperty from "./components/property/my-properties/My-Properties";
 import PropertyCreateEditForm from "./components/property/property-create-edit/Property-Create-Edit-Form";
-import AboutUs from "./components/About-Us";
 import Footer from "./components/Footer";
 import BackToTop from "./components/Back-To-Top";
 
@@ -31,7 +31,8 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<LoginForm />} />
                     <Route path="/register" element={<RegisterForm />} />
-                    <Route path="/our-mission" element={<AboutUs />} />
+
+                    <Route path="/our-mission" element={<OurMission />} />
 
                     <Route path="/properties/:propertyId" element={
                         <PropertyContextProvider>

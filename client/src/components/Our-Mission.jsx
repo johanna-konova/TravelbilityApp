@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Image, Button, Card } from 'react-bootstrap';
 
-export default function AboutUs() {
+export default function OurMission() {
     return (
         <>
             <Container fluid className="py-5">
