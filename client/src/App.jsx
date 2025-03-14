@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import LoginForm from "./components/auth-forms/Login-Form";
 import RegisterForm from "./components/auth-forms/Register-Form";
+import AllProperties from "./components/properties/all-properties/All-Properties";
 import OurMission from "./components/Our-Mission";
 import PropertyDetailsContainer from "./components/property/property-details/Property-Details-Container";
 import UserProperties from "./components/properties/user-properties/User-Properties";
@@ -32,6 +33,7 @@ function App() {
                     <Route path="/login" element={<LoginForm />} />
                     <Route path="/register" element={<RegisterForm />} />
 
+                    <Route path="/properties" element={<AllProperties />} />
                     <Route path="/our-mission" element={<OurMission />} />
 
                     <Route path="/properties/:propertyId" element={
