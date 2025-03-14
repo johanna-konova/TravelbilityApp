@@ -173,21 +173,20 @@
         const tokens = url.pathname.split('/').filter(x => x.length > 0);
         const serviceName = tokens.shift();
         const queryString = url.search.split('?')[1] || '';
+        
         const query = queryString
             .split('&')
             .filter(s => s != '')
             .map(x => x.split('='))
             .reduce((p, [k, v]) => Object.assign(p, { [k]: decodeURIComponent(v.replace(/\+/g, " ")) }), {});
-        
-        const body = req.body;
 
-        /*let body;
+        let body;
         // If req stream has ended body has been parsed
         if (req.readableEnded) {
             body = req.body;
         } else {
             body = await parseBody(req);
-        }*/
+        }
 
         return {
             serviceName,
@@ -1369,6 +1368,45 @@
                 _createdOn: 1740738248761,
                 _id: "dad3fd4d-0485-4728-bb26-d02e8a26992a"
             },
+            "1489d70a-329d-4745-bc68-455d9ac75c83": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                name: "Hilton Garden Inn Istanbul Beylikduzu",
+                typeId: "0j1k2l3m-4567-89ab-cdef-0123456789kl",
+                starsCount: "4",
+                checkIn: "14:00",
+                checkOut: "00:00",
+                address: "Barbaros Hayrettin Pasa Mah. 1999 Sok. Esenyurt, 34522 Istanbul, Turkey",
+                description: "Located in business area in Beylikduzu, 1 km from Tuyap Convention Centre, Hilton Garden Inn Istanbul Beylikduzu features indoor pool and 24/7 fitness centre. Free WiFi access is available in all areas.\n\nModern rooms are fitted with a flat-screen TV. Some units include a seating area for your convenience. Every room comes with a private bathroom. For your comfort, you will find free toiletries and a hair dryer.\n\nThere is a 24-hour front desk, providing room service at the property. Laundry, dry cleaning and ironing services are also provided upon request at an additional charge.\n\nGuests can enjoy their meals at the on-site restaurant. The lobby bar is ideal for having a drink and relaxing after a busy day.\n\nThe hotel is 35 km from Istanbul’s historic centre, where guests can visit Topkapi Palace, Blue Mosque, and Hagia Sophia Museum. Istanbul Airport is a 50-minute drive away. Mall of Istanbul is 25 km, Airport Outlet Center is 20 km, Akbatı Shopping Mall is 8 km.",
+                imageUrls: [
+                    "https://cf.bstatic.com/xdata/images/hotel/max1024x768/484105483.jpg?k=d381f915f7e9311bf64734cbb87742eec40a834264ba1c1237f7e18f7276060a&o=",
+                    "https://cf.bstatic.com/xdata/images/hotel/max500/484806261.jpg?k=82afaa65c2e8396120999c45e40bb3ec760a91a793f9f93e85abc1e678f0a7a1&o=",
+                    "https://cf.bstatic.com/xdata/images/hotel/max300/484105537.jpg?k=e47db70ecd10f46adc980421e2495483a18a256147949ec75fecc5fb108a87de&o=",
+                    "https://cf.bstatic.com/xdata/images/hotel/max1024x768/513203867.jpg?k=d2899a2b7c4e9951abb20c934dfefbcc7c7e60c025ee3feca3f7483913ab877c&o=&hp=1",
+                    "https://cf.bstatic.com/xdata/images/hotel/max1024x768/484105543.jpg?k=adbc5414747997bd2c7d69ec85b08d84fd379719f210e610d60fa75220500abb&o=&hp=1"
+                ],
+                _createdOn: 1741882486449,
+                _id: "1489d70a-329d-4745-bc68-455d9ac75c83"
+            },
+            "edfc6ac1-bfc0-466b-b613-0cd86fa709ae": {
+                _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                name: "Summer Beach Maldives",
+                typeId: "1k2l3m4n-5678-90ab-cdef-1234567890lm",
+                starsCount: "4",
+                checkIn: "14:00",
+                checkOut: "12:00",
+                address: "Boduthakurufaanu Magu, 20006 Male City, Maldives",
+                description: "Beachfront Location: Summer Beach Maldives in Male City offers direct beachfront access with stunning sea views. Guests enjoy a terrace and outdoor seating area, perfect for relaxation.\n\nComfortable Accommodation: Rooms feature air-conditioning, private bathrooms, and modern amenities such as free WiFi, minibars, and flat-screen TVs. Family rooms and interconnected rooms cater to all travellers.\n\nDining Experience: The family-friendly restaurant serves Indian, Italian, Thai, and international cuisines, including vegetarian and halal options. Breakfast includes local specialities, fresh pastries, and a variety of beverages.\n\nConvenient Services: The guest house provides a free airport shuttle service, 24-hour front desk, concierge, and tour desk. Additional amenities include a coffee shop, child-friendly buffet, and free toiletries.",
+                imageUrls: [
+                    "https://cf.bstatic.com/xdata/images/hotel/max1024x768/398767814.jpg?k=d9962306000f2dfa5aab8437d8b693ee3973b24b5d8e21b0acf6ea0895394d15&o=",
+                    "https://cf.bstatic.com/xdata/images/hotel/max500/398788806.jpg?k=59ada28a447085e1328c22f48683ae09006e132f368ed5042157dd29b1c5576a&o=",
+                    "https://cf.bstatic.com/xdata/images/hotel/max300/398793461.jpg?k=ae444a40c98b2d4057628ca8d02aa0c1e8e660babeff1a83c82e9544adcdb948&o=",
+                    "https://cf.bstatic.com/xdata/images/hotel/max1024x768/398767817.jpg?k=e625a8c84d8c55e279931f86ac0bad61436de6f200203801138490f956413528&o=&hp=1",
+                    "https://cf.bstatic.com/xdata/images/hotel/max1024x768/398767820.jpg?k=6724f5c42976d9f85d6ea43dd55ac74f19f39236bda8a94b22172f5c73983e7d&o=&hp=1",
+                    "https://cf.bstatic.com/xdata/images/hotel/max300/398788805.jpg?k=d62249809015446993fdfd99536284f76de4c7a093cfbb6461d62497d744462a&o="
+                ],
+                _createdOn: 1741884362990,
+                _id: "edfc6ac1-bfc0-466b-b613-0cd86fa709ae"
+            },
         },
         propertiesFacilities: {
             "3648be12-1fab-4bee-90d7-3c16c8701565": {
@@ -1433,6 +1471,139 @@
                 facilityId: "s9t0u1v2-3456-78ab-cdef-9012345678st",
                 _createdOn: 1740738248857,
                 _id: "2444f3ec-964e-446e-a04d-f5db09a13b87"
+            },
+            "8d07802c-edfa-4480-b9df-f2406de6c520": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                propertyId: "1489d70a-329d-4745-bc68-455d9ac75c83",
+                facilityId: "b2c3d4e5-6789-01ab-cdef-2345678901bc",
+                _createdOn: 1741882486461,
+                _id: "8d07802c-edfa-4480-b9df-f2406de6c520"
+            },
+            "a00a3685-93fd-4707-9039-18ff82022540": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                propertyId: "1489d70a-329d-4745-bc68-455d9ac75c83",
+                facilityId: "i9j0k1l2-3456-78ab-cdef-9012345678ij",
+                _createdOn: 1741882486474,
+                _id: "a00a3685-93fd-4707-9039-18ff82022540"
+            },
+            "ef60266e-3afb-4084-8e4f-ca5fd0532933": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                propertyId: "1489d70a-329d-4745-bc68-455d9ac75c83",
+                facilityId: "o5p6q7r8-9012-34ab-cdef-5678901234op",
+                _createdOn: 1741882486484,
+                _id: "ef60266e-3afb-4084-8e4f-ca5fd0532933"
+            },
+            "6a9ac99e-b562-49c1-8f6a-d91695e293be": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                propertyId: "1489d70a-329d-4745-bc68-455d9ac75c83",
+                facilityId: "r8s9t0u1-2345-67ab-cdef-8901234567rs",
+                _createdOn: 1741882486495,
+                _id: "6a9ac99e-b562-49c1-8f6a-d91695e293be"
+            },
+            "230cfecd-cb53-42d9-b079-40372e83e20f": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                propertyId: "1489d70a-329d-4745-bc68-455d9ac75c83",
+                facilityId: "t0u1v2w3-4567-89ab-cdef-0123456789tu",
+                _createdOn: 1741882486507,
+                _id: "230cfecd-cb53-42d9-b079-40372e83e20f"
+            },
+            "d71b61fb-bb7f-4500-8d77-e810a0e5f883": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                propertyId: "1489d70a-329d-4745-bc68-455d9ac75c83",
+                facilityId: "a1b2c3d4-5678-90ab-cdef-1234567890ab",
+                _createdOn: 1741882486518,
+                _id: "d71b61fb-bb7f-4500-8d77-e810a0e5f883"
+            },
+            "fd7c8272-719e-4ea5-81c1-9d5ebc20d745": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                propertyId: "1489d70a-329d-4745-bc68-455d9ac75c83",
+                facilityId: "e5f6g7h8-9012-34ab-cdef-5678901234ef",
+                _createdOn: 1741882486528,
+                _id: "fd7c8272-719e-4ea5-81c1-9d5ebc20d745"
+            },
+            "f7e31918-c305-4105-baeb-68e6571be66d": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                propertyId: "1489d70a-329d-4745-bc68-455d9ac75c83",
+                facilityId: "h8i9j0k1-2345-67ab-cdef-8901234567hi",
+                _createdOn: 1741882486539,
+                _id: "f7e31918-c305-4105-baeb-68e6571be66d"
+            },
+            "800bc2bb-5fa1-4e3f-ab06-a6dc84738cfd": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                propertyId: "1489d70a-329d-4745-bc68-455d9ac75c83",
+                facilityId: "m3n4o5p6-7890-12ab-cdef-3456789012mn",
+                _createdOn: 1741882486549,
+                _id: "800bc2bb-5fa1-4e3f-ab06-a6dc84738cfd"
+            },
+            "828a756c-9a6d-4471-b7cd-ed2e17b8443c": {
+                _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                propertyId: "edfc6ac1-bfc0-466b-b613-0cd86fa709ae",
+                facilityId: "b2c3d4e5-6789-01ab-cdef-2345678901bc",
+                _createdOn: 1741884363003,
+                _id: "828a756c-9a6d-4471-b7cd-ed2e17b8443c"
+            },
+            "e490c545-c7f1-40a4-862f-1189979054af": {
+                _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                propertyId: "edfc6ac1-bfc0-466b-b613-0cd86fa709ae",
+                facilityId: "f6g7h8i9-0123-45ab-cdef-6789012345fg",
+                _createdOn: 1741884363014,
+                _id: "e490c545-c7f1-40a4-862f-1189979054af"
+            },
+            "791d0d9d-dc0e-43a2-81ba-2a0ec13bdb1e": {
+                _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                propertyId: "edfc6ac1-bfc0-466b-b613-0cd86fa709ae",
+                facilityId: "k1l2m3n4-5678-90ab-cdef-1234567890kl",
+                _createdOn: 1741884363024,
+                _id: "791d0d9d-dc0e-43a2-81ba-2a0ec13bdb1e"
+            },
+            "911a5b38-80a1-4010-b623-77646890a5b0": {
+                _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                propertyId: "edfc6ac1-bfc0-466b-b613-0cd86fa709ae",
+                facilityId: "o5p6q7r8-9012-34ab-cdef-5678901234op",
+                _createdOn: 1741884363035,
+                _id: "911a5b38-80a1-4010-b623-77646890a5b0"
+            },
+            "1b7bb21d-c3ea-4b13-8bc2-bb0e75ee287b": {
+                _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                propertyId: "edfc6ac1-bfc0-466b-b613-0cd86fa709ae",
+                facilityId: "r8s9t0u1-2345-67ab-cdef-8901234567rs",
+                _createdOn: 1741884363044,
+                _id: "1b7bb21d-c3ea-4b13-8bc2-bb0e75ee287b"
+            },
+            "40a78ad6-fa8c-45b7-989a-eb124508e4cc": {
+                _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                propertyId: "edfc6ac1-bfc0-466b-b613-0cd86fa709ae",
+                facilityId: "e5f6g7h8-9012-34ab-cdef-5678901234ef",
+                _createdOn: 1741884363059,
+                _id: "40a78ad6-fa8c-45b7-989a-eb124508e4cc"
+            },
+            "5ffa2b4a-b8e7-4bf6-b4e1-59c7a35e6af0": {
+                _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                propertyId: "edfc6ac1-bfc0-466b-b613-0cd86fa709ae",
+                facilityId: "h8i9j0k1-2345-67ab-cdef-8901234567hi",
+                _createdOn: 1741884363070,
+                _id: "5ffa2b4a-b8e7-4bf6-b4e1-59c7a35e6af0"
+            },
+            "01459768-5d41-4e75-8de8-bf1c34c2cdb4": {
+                _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                propertyId: "edfc6ac1-bfc0-466b-b613-0cd86fa709ae",
+                facilityId: "j0k1l2m3-4567-89ab-cdef-0123456789jk",
+                _createdOn: 1741884363080,
+                _id: "01459768-5d41-4e75-8de8-bf1c34c2cdb4"
+            },
+            "57f38986-08dd-4168-800b-8a4b9244f687": {
+                _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                propertyId: "edfc6ac1-bfc0-466b-b613-0cd86fa709ae",
+                facilityId: "l2m3n4o5-6789-01ab-cdef-2345678901lm",
+                _createdOn: 1741884363088,
+                _id: "57f38986-08dd-4168-800b-8a4b9244f687"
+            },
+            "6b3674ac-3ffa-4f0d-8ffb-c82895536857": {
+                _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                propertyId: "edfc6ac1-bfc0-466b-b613-0cd86fa709ae",
+                facilityId: "p6q7r8s9-0123-45ab-cdef-6789012345pq",
+                _createdOn: 1741884363100,
+                _id: "6b3674ac-3ffa-4f0d-8ffb-c82895536857"
             },
         },
         bedTypes: {
