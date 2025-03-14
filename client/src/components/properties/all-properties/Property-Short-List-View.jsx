@@ -1,13 +1,13 @@
-import { Card, Row } from "react-bootstrap";
+import { Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 import { useBasicGetFetch } from "../../../hooks/use-basic-get-fetch";
 import { getPropertyAccessibilityById } from "../../../services/propertiesServices";
 import { generateStarIcons } from "../../../utils/property-utils";
 
 import styles from './All-Properties.module.css';
-import { Link } from "react-router-dom";
 
-export default function PropertyShortGridView({
+export default function PropertyShortListView({
     _id,
     imageUrls,
     name,

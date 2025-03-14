@@ -6,7 +6,7 @@ import { useBasicGetFetch } from '../../../hooks/use-basic-get-fetch';
 import { getAll, getFacilities, getPropertyTypes } from '../../../services/propertiesServices';
 
 import FiltersContainer from '../filters/Filters-Container';
-import PropertyShortGridView from './Property-Short-Grid-View';
+import PropertyShortListView from './Property-Short-List-View';
 
 import styles from './All-Properties.module.css';
 
@@ -72,7 +72,7 @@ export default function AllProperties() {
                 <div className={styles["found"]}>
                     <span>Found suitable properties: {propertiesData.length}</span>
                 </div>
-                {propertiesData.map(pd => <PropertyShortGridView key={pd._id} {...pd} />)}
+                {propertiesData.map(pd => <PropertyShortListView key={pd._id} {...pd} />)}
             </div>
         </Container>
     )
