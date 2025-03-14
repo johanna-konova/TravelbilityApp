@@ -5,13 +5,17 @@ import { generateStarIcons } from '../../../utils/property-utils';
 
 import styles from './User-Properties.module.css';
 
-export default function PropertyShortView({ propertyData }) {
+export default function PropertyShortGridView({ propertyData }) {
     return (
         <>
             <Card className={styles["property-card"]}>
-                <Card.Img variant="top" src={propertyData.imageUrls[0]} />
+                <Link to={`/properties/${propertyData._id}`}>
+                    <Card.Img variant="top" src={propertyData.imageUrls[0]} />
+                </Link>
                 <Card.Body>
-                    <Card.Title className="mb-0">{propertyData.name}</Card.Title>
+                    <Link to={`/properties/${propertyData._id}`}>
+                        <Card.Title className="mb-0">{propertyData.name}</Card.Title>
+                    </Link>
                     <div className={styles["stars"]}>{generateStarIcons(Number(propertyData.starsCount))}</div>
                     <Card.Text className="mt-2">
                         <i className="fas fa-map-marker-alt"></i> <span>{propertyData.address}</span>
