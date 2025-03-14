@@ -86,7 +86,7 @@ export default function PropertyCreateEditForm() {
             imageUrls: data["step-3"].imageUrls.map(iu => iu.url)
         };
 
-        const createdPropertyData = data.id
+        const savedPropertyData = data.id
             ? await propertyAPI.edit(data.id, propertyData)
             : await propertyAPI.create(propertyData);
 
@@ -99,7 +99,7 @@ export default function PropertyCreateEditForm() {
         for (const facilityId of facilityIds) {
             if (propertyFacilities.some(pf => pf.facilityId === facilityId) === false) {
                 await propertyAPI.createPropertyFacility({
-                    propertyId: createdPropertyData._id,
+                    propertyId: savedPropertyData._id,
                     facilityId
                 });
             }
