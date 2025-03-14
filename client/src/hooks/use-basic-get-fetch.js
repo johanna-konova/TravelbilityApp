@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export function useBasicGetFetch(getDataCallbackFunction, initialData = []) {
+export function useBasicGetFetch(getDataCallbackFunction, initialData = [], dependencies = []) {
     const [data, setData] = useState(initialData);
     const [isDataLoaded, setIsDataLoaded] = useState(false);
 
@@ -12,7 +12,7 @@ export function useBasicGetFetch(getDataCallbackFunction, initialData = []) {
             setIsDataLoaded(true);
         }
         )()
-    }, []);
+    }, dependencies);
 
     return {
         data,
