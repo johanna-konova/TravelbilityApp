@@ -5484,14 +5484,14 @@ a.close.disabled {
 }
 
 .modal-header {
+  background-color: #212121;
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
-  padding: 1rem 1rem;
-  border-bottom: 1px solid #dee2e6;
+  justify-content: end;
+  padding: 0.5rem 0.75rem;
 }
 
-.modal-header .close {
+.modal-header div {
   padding: 1rem 1rem;
   margin: -1rem -1rem -1rem auto;
 }

@@ -13,10 +13,11 @@ export default function PropertyDetails({
     facilities,
 }) {
     return (
-        <Container className="mt-5">
+        <Container className="mt-3">
             <div className="d-flex">
-                <h1 className="mb-0 pr-2">{name}</h1>
-                <span className={styles["stars"]}>{generateStarIcons(Number(starsCount ?? 0))}</span>
+                <h1 className="mb-0 pr-0">{name} 
+                </h1>
+                    <span className={styles["stars"]}>{generateStarIcons(Number(starsCount ?? 0))}</span>
             </div>
 
             <Card.Text className={styles["address"]}>

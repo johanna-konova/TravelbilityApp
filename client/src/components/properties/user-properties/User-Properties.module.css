@@ -42,12 +42,6 @@ button {
     color: #555;
 }
 
-.property-card .card-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .property-card .card-footer a,
 .property-card .card-footer button {
     margin: 0;

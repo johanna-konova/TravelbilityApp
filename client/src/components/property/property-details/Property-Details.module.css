@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   gap: 3px;
+  margin-bottom: 0.5rem;
 }
 
 .main-image {
@@ -50,7 +51,8 @@
 
 .facilities label {
   margin-bottom: 0;
-  font-size: 1.5rem;
+  font-size: calc(1.275rem + 0.3vw);
+  font-weight: 600;
 }
 
 .facilities span {
