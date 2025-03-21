@@ -4,9 +4,11 @@ import { Container } from 'react-bootstrap';
 
 import { useBasicGetFetch } from '../../../hooks/use-basic-get-fetch';
 import { getAll, getFacilities, getPropertyTypes } from '../../../services/propertiesServices';
+import { useAuthContext } from '../../../contexts/Auth-Context';
 
 import FiltersContainer from '../filters/Filters-Container';
 import PropertyShortListView from './Property-Short-List-View';
+import WheelchairTireSpinner from '../../loaders/Wheelcheir-Tire-Spinner';
 
 import styles from './All-Properties.module.css';
 
@@ -16,9 +18,11 @@ export default function AllProperties() {
         facilityIds: [],
         accessibilityIds: [],
     });
-
-    const navigate = useNavigate();
+    
     const [searchParams] = useSearchParams();
+    const navigate = useNavigate();
+
+    const { id } = useAuthContext();
 
     const searchParamsEntries = Object.fromEntries(searchParams);
 
@@ -49,7 +53,7 @@ export default function AllProperties() {
             .map(([k, v]) => `${k}=${v.join(",")}`)
             .join("&");
 
-        navigate(`/properties?${searchParams}`);
+        navigate(`/properties?${searchParams}`, { replace: true });
     }, [filters]);
 
     const setFiltersHandler = (name, id) => setFilters(previousFilters => ({
@@ -72,7 +76,12 @@ export default function AllProperties() {
                 <div className={styles["found"]}>
                     <span>Found suitable properties: {propertiesData.length}</span>
                 </div>
-                {propertiesData.map(pd => <PropertyShortListView key={pd._id} {...pd} />)}
+                {isPropertiesDataLoaded
+                    ? propertiesData.map(pd =>
+                        <PropertyShortListView key={pd._id} {...pd} isLoggedInUserPropertyDataCreator={id === pd._ownerId}
+                    />)
+                    : <WheelchairTireSpinner style={{ minHeight: "calc(100vh - 270px)" }} />
+                }
             </div>
         </Container>
     )

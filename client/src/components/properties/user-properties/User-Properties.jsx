@@ -1,8 +1,9 @@
 import React from 'react';
-import { Container, Spinner } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
 import NoProperties from './No-Properties';
 import UserPropertiesContainer from './User-Properties-Container';
+import WheelchairTireSpinner from '../../loaders/Wheelcheir-Tire-Spinner';
 
 import { useAuthContext } from '../../../contexts/Auth-Context';
 import { useBasicGetFetch } from '../../../hooks/use-basic-get-fetch';
@@ -21,7 +22,7 @@ export default function UserProperties() {
                     ? propertiesDataByOwnerId.length === 0
                         ? <NoProperties />
                         : <UserPropertiesContainer propertiesDataByOwnerId={propertiesDataByOwnerId} />
-                    : <Spinner />
+                    : <WheelchairTireSpinner />
                 }
             </Container>
         </>
