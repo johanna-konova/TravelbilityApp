@@ -1,0 +1,20 @@
+.x-icon {
+    cursor: pointer;
+}
+
+.modal-body {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.agree-btn {
+    background-color: #c82333;
+}
+
+.warning-message {
+    color: #c82333;
+    font-style: italic;
+    font-size: 14px;
+    font-weight: normal;
+}
