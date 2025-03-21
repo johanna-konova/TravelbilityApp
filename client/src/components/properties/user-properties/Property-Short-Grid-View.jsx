@@ -1,7 +1,9 @@
-import { Button, Card } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import { generateStarIcons } from '../../../utils/property-utils';
+
+import UserActions from '../../user-actions/User-Actions';
 
 import styles from './User-Properties.module.css';
 
@@ -12,7 +14,7 @@ export default function PropertyShortGridView({ propertyData }) {
                 <Link to={`/properties/${propertyData._id}`}>
                     <Card.Img variant="top" src={propertyData.imageUrls[0]} />
                 </Link>
-                <Card.Body>
+                <Card.Body className="pb-0">
                     <Link to={`/properties/${propertyData._id}`}>
                         <Card.Title className="mb-0">{propertyData.name}</Card.Title>
                     </Link>
@@ -22,12 +24,12 @@ export default function PropertyShortGridView({ propertyData }) {
                     </Card.Text>
                     <Card.Text>{propertyData.description.slice(0, 150) + '...'}</Card.Text>
                 </Card.Body>
-
-                <Card.Footer className={styles["card-footer"]}>
-                    <Link to={`/properties/${propertyData._id}`} type="button" className="btn btn-outline-success">View</Link>
-                    <Link to={`/edit/${propertyData._id}`} type="button" className="btn btn-outline-warning">Edit</Link>
-                    <Button variant="outline-danger">Delete</Button>
-                </Card.Footer>
+                
+                <UserActions
+                    _id={propertyData._id}
+                    name={propertyData.name}
+                    hasPaddingBottom={true}
+                />
             </Card>
         </>
     )

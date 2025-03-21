@@ -6,6 +6,7 @@ import { getPropertyAccessibilityById } from "../../../services/propertiesServic
 import { generateStarIcons } from "../../../utils/property-utils";
 
 import styles from './All-Properties.module.css';
+import UserActions from "../../user-actions/User-Actions";
 
 export default function PropertyShortListView({
     _id,
@@ -13,6 +14,7 @@ export default function PropertyShortListView({
     name,
     starsCount,
     address,
+    isLoggedInUserPropertyDataCreator
 }) {
     const {
         data: propertyAccessibility,
@@ -43,6 +45,8 @@ export default function PropertyShortListView({
                         )}
                     </div>
                 </div>
+
+                {isLoggedInUserPropertyDataCreator && <UserActions _id={_id} name={name} />}
             </div>
         </div>
     )
