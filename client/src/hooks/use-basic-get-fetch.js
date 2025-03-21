@@ -6,6 +6,8 @@ export function useBasicGetFetch(getDataCallbackFunction, initialData = [], depe
 
     useEffect(() => {
         (async () => {
+            setIsDataLoaded(false);
+            
             const data = await getDataCallbackFunction();
 
             setData(data);

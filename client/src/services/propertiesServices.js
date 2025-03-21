@@ -33,6 +33,8 @@ export const getAll = async ({
     return api.get(`${endpoint}/properties`);
 };
 
+export const getThreeNewestAdded = async () => api.get(`${endpoint}/properties?sortBy=_createdOn%20desc&pageSize=3&load=typeData%3DtypeId%3ApropertyTypes`);
+
 export const getById = async (id) => api.get(`${endpoint}/properties/${id}`);
 
 export const getByOwnerId = async (ownerId) => api.get(`${endpoint}/properties?where=_ownerId%3D%22${ownerId}%22`);
@@ -40,6 +42,8 @@ export const getByOwnerId = async (ownerId) => api.get(`${endpoint}/properties?w
 export const getPropertyTypes = async () => api.get(`${endpoint}/propertyTypes`);
 
 export const getFacilities = async () => api.get(`${endpoint}/facilities`);
+
+export const getAccessibility = async () => api.get(`${endpoint}/facilities?where=IsForAccessibility%3Dtrue`);
 
 export const getPropertyFacilities = async (propertyId) => {
     const propertyFacilitiesData = await api.get(`${endpoint}/propertiesFacilities?where=propertyId%3D%22${propertyId}%22&load=facility%3DfacilityId%3Afacilities`);

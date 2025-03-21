@@ -7,7 +7,7 @@ import AuthGuard from "./components/common/Auth-Guard";
 
 import Topbar from "./components/Topbar";
 import Navbar from "./components/Navbar";
-import Home from "./components/Home";
+import Home from "./components/home/Home";
 import LoginForm from "./components/auth-forms/Login-Form";
 import RegisterForm from "./components/auth-forms/Register-Form";
 import AllProperties from "./components/properties/all-properties/All-Properties";
