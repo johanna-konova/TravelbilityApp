@@ -8,8 +8,7 @@ export const PropertyContext = createContext({
     propertyData: {},
     propertyFacilities: [],
     propertyCreatorId: '',
-    isPropertyLoaded: false,
-    //updatePropertyDataHandler: (propertyId, propertyData) => { },
+    isPropertyDataLoaded: false,
 });
 
 export default function PropertyContextProvider(props) {
@@ -32,18 +31,12 @@ export default function PropertyContextProvider(props) {
         }
     }, [propertyId]);
 
-    const updatePropertyDataHandler = async (updatedPropertyDataCallbackFunction) => {
-        const response = await updatedPropertyDataCallbackFunction();
-        setPropertyData(response);
-    };
-
     const contextData = {
         propertyId,
         propertyData,
         propertyFacilities,
         propertyCreatorId: propertyData._ownerId,
         isPropertyDataLoaded,
-        //updatePropertyDataHandler
     };
 
     return (
