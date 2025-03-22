@@ -23,7 +23,7 @@ export default function RegisterForm() {
     async function register(userData) {
         try {
             await registerHandler(userData);
-            navigate('/');
+            navigate(-1);
         } catch (error) {
             setErrorMessage(error.message)
         }

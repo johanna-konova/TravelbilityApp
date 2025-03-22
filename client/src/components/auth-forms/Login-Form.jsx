@@ -22,7 +22,7 @@ export default function LoginForm() {
     async function login(userData) {
         try {
             await loginHandler(userData);
-            navigate('/');
+            navigate(-1);
         } catch (error) {
             setErrorMessage(error.message)
         }
