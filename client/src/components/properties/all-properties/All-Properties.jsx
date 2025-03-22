@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 
+import { useAuthContext } from '../../../contexts/Auth-Context';
+import { PropertiesContext } from '../../../contexts/Properties-Context';
+
 import { useBasicGetFetch } from '../../../hooks/use-basic-get-fetch';
 import { getAll, getFacilities, getPropertyTypes } from '../../../services/propertiesServices';
-import { useAuthContext } from '../../../contexts/Auth-Context';
 
 import FiltersContainer from '../filters/Filters-Container';
 import PropertyShortListView from './Property-Short-List-View';
@@ -18,17 +20,18 @@ export default function AllProperties() {
         facilityIds: [],
         accessibilityIds: [],
     });
-    
+
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
-
+    
     const { id } = useAuthContext();
 
     const searchParamsEntries = Object.fromEntries(searchParams);
 
     const {
         data: propertiesData,
-        isDataLoaded: isPropertiesDataLoaded } = useBasicGetFetch(() => getAll({...filters}), [], [filters]);
+        isDataLoaded: isPropertiesDataLoaded,
+        removeDataElement: deletePropertyByIdHandler } = useBasicGetFetch(() => getAll(filters), [], [filters]);
 
     const {
         data: propertyTypes,
@@ -43,7 +46,7 @@ export default function AllProperties() {
             .reduce((updatedFilters, k) => {
                 updatedFilters[k] = searchParamsEntries[k]?.split(",") || [];
                 return updatedFilters;
-            }, {...previousFilters})
+            }, { ...previousFilters })
         );
     }, [searchParams]);
 
@@ -77,12 +80,19 @@ export default function AllProperties() {
                     <span>Found suitable properties: {propertiesData.length}</span>
                 </div>
                 {isPropertiesDataLoaded
-                    ? propertiesData.map(pd =>
-                        <PropertyShortListView key={pd._id} {...pd} isLoggedInUserPropertyDataCreator={id === pd._ownerId}
-                    />)
+                    ? <PropertiesContext.Provider value={{ deletePropertyByIdHandler }}>
+                        {propertiesData.map(pd =>
+                            <PropertyShortListView
+                                key={pd._id}
+                                {...pd}
+                                isLoggedInUserPropertyDataCreator={id === pd._ownerId}
+                            />
+                        )}
+                      </PropertiesContext.Provider>
                     : <WheelchairTireSpinner style={{ minHeight: "calc(100vh - 270px)" }} />
                 }
             </div>
+
         </Container>
     )
 };

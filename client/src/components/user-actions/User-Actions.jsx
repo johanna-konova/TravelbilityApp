@@ -1,6 +1,11 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import toast from "react-hot-toast";
+
+import { usePropertiesContext } from '../../contexts/Properties-Context';
+
+import { deleteById, deletePropertyFacilities } from '../../services/propertiesServices';
 
 import DeleteModal from '../modals/Delete-Modal';
 
@@ -12,8 +17,26 @@ export default function UserActions({
     hasPaddingBottom
 }) {
     const [isDeleteModalShowed, setIsDeleteModalShowed] = useState(false);
+    const [isDeleting, setIsDeleting] = useState(false);
+    const navigate = useNavigate();
+    const { deletePropertyByIdHandler } = usePropertiesContext();
 
     const hideDeleteModalHandler = () => setIsDeleteModalShowed(false);
+
+    const deleteHandler = async (id) => {
+        try {
+            setIsDeleting(true);
+            await Promise.all([deleteById(id), deletePropertyFacilities(id)]);
+            deletePropertyByIdHandler === undefined
+                ? navigate(-1)
+                : deletePropertyByIdHandler(id);
+            toast.success("You have successfully deleted the property.");
+        } catch (error) {
+            toast.error("An unexpected error occurred. Please try again or contact us.");
+        } finally {
+            hideDeleteModalHandler();
+        }
+    }
 
     return (
         <>
@@ -30,7 +53,9 @@ export default function UserActions({
                 propertyId={_id}
                 propertyName={name}
                 isModalShowed={isDeleteModalShowed}
+                isDeleting={isDeleting}
                 closeModalHandler={hideDeleteModalHandler}
+                deleteHandler={() => deleteHandler(_id)}
             />
         </>
     )

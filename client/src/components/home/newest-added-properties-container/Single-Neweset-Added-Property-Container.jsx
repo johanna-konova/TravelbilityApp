@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 
+import UserActions from "../../user-actions/User-Actions";
+
 import { getCountryName } from "../../../utils/property-utils";
 
 import styles from "../Home.module.css";
-import UserActions from "../../user-actions/User-Actions";
 
 export default function SingeNewestAddedPropertyContainer({
     _id,

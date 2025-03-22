@@ -56,7 +56,7 @@ export default function Home() {
                 </div>
             </div>
             {/* Carousel End */}
-
+            
             <NewestAddedPropertiesContainer />
 
             <AccessibilityConteiner />

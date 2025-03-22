@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 
+import { useAuthContext } from "../../../contexts/Auth-Context";
+import { PropertiesContext } from "../../../contexts/Properties-Context";
+
 import { useBasicGetFetch } from "../../../hooks/use-basic-get-fetch";
 import { getThreeNewestAdded } from "../../../services/propertiesServices";
-
-import { useAuthContext } from "../../../contexts/Auth-Context";
 
 import SingeNewestAddedPropertyContainer from "./Single-Neweset-Added-Property-Container";
 import WheelchairTireSpinner from "../../loaders/Wheelcheir-Tire-Spinner";
@@ -11,11 +12,11 @@ import WheelchairTireSpinner from "../../loaders/Wheelcheir-Tire-Spinner";
 import styles from "../Home.module.css";
 
 export default function NewestAddedPropertiesContainer() {
+    const { id } = useAuthContext();
     const {
         data: theeNewestAddedPropertiesData,
-        isDataLoaded: isThreeNewestAddedPropertiesDataLoaded } = useBasicGetFetch(() => getThreeNewestAdded());
-
-    const { id } = useAuthContext();
+        isDataLoaded: isThreeNewestAddedPropertiesDataLoaded,
+        removeDataElement: deletePropertyByIdHandler } = useBasicGetFetch(getThreeNewestAdded);
 
     return (
         <>
@@ -31,14 +32,16 @@ export default function NewestAddedPropertiesContainer() {
                     </div>
                     <div className="row justify-content-center">
                         {isThreeNewestAddedPropertiesDataLoaded
-                            ? theeNewestAddedPropertiesData.map(tnapd =>
-                                <SingeNewestAddedPropertyContainer
-                                    key={tnapd._id}
-                                    {...tnapd}
-                                    isLoggedInUserPropertyDataCreator={id === tnapd._ownerId}
-                                />
-                            )
-                            : <WheelchairTireSpinner style={{ minHeight: "calc(100vh - 450px)" }}/>
+                            ? <PropertiesContext.Provider value={{ deletePropertyByIdHandler }}>
+                                {theeNewestAddedPropertiesData.map(tnapd =>
+                                    <SingeNewestAddedPropertyContainer
+                                        key={tnapd._id}
+                                        {...tnapd}
+                                        isLoggedInUserPropertyDataCreator={id === tnapd._ownerId}
+                                    />
+                                )}
+                            </PropertiesContext.Provider>
+                            : <WheelchairTireSpinner style={{ minHeight: "calc(100vh - 450px)" }} />
                         }
                     </div>
                     <div className={styles["explore-all"]}>

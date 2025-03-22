@@ -1,25 +1,30 @@
-import { Button, Modal } from 'react-bootstrap';
+import { Button, Modal, Spinner } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import styles from './Modals.module.css';
-import { Link } from 'react-router-dom';
 
 export default function DeleteModal({
     propertyId,
     propertyName,
     isModalShowed,
-    closeModalHandler
+    isDeleting,
+    closeModalHandler,
+    deleteHandler
 }) {
     return (
-        <Modal show={isModalShowed} onHide={closeModalHandler} centered>
+        <Modal show={isModalShowed} centered>
             <Modal.Header>
-                <div className={styles["x-icon"]} onClick={closeModalHandler}>
+                <Button className={styles["x-icon"]} disabled={isDeleting} onClick={closeModalHandler}>
                     <i className="fas fa-times text-primary"></i>
-                </div>
+                </Button>
             </Modal.Header>
             <Modal.Body className={styles["modal-body"]}>
                 Are you sure you want to delete
                 <div>
-                    <Link to={`/properties/${propertyId}`} className="text-dark">{propertyName}</Link>
+                    {isDeleting
+                        ? <span className={styles["deleting"]}>{propertyName}</span>
+                        : <Link to={`/properties/${propertyId}`} className="text-dark">{propertyName}</Link>
+                    }
                     ?
                 </div>
 
@@ -31,11 +36,23 @@ export default function DeleteModal({
                 </div>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="primary" onClick={closeModalHandler}>
+                <Button variant="primary" disabled={isDeleting} onClick={closeModalHandler}>
                     Cancel
                 </Button>
-                <Button className={styles["agree-btn"]} variant="danger">
-                    Delete
+                <Button className={styles["agree-btn"]} variant="danger" disabled={isDeleting} onClick={deleteHandler}>
+                    {isDeleting
+                        ? <>
+                            <Spinner
+                                as="span"
+                                animation="border"
+                                size="sm"
+                                role="status"
+                                aria-hidden="true"
+                            />
+                            Deleting...
+                          </>
+                        : <span>Delete</span>
+                    }
                 </Button>
             </Modal.Footer>
         </Modal>

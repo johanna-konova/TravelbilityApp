@@ -13,12 +13,18 @@ export function useBasicGetFetch(getDataCallbackFunction, initialData = [], depe
             setData(data);
             setIsDataLoaded(true);
         }
-        )()
+        )();
     }, dependencies);
+
+    const removeDataElement = (id) => {
+        if (data.length) {
+            setData(previousData => previousData.filter(pd => pd._id !== id));
+        }
+    };
 
     return {
         data,
-        setData,
-        isDataLoaded
+        isDataLoaded,
+        removeDataElement,
     }
 }

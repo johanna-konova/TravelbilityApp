@@ -68,6 +68,18 @@ export const create = async (data) => api.post(`${endpoint}/properties`, data);
 
 export const edit = async (id, data) => api.put(`${endpoint}/properties/${id}`, data);
 
+export const deleteById = async (id) => api.del(`${endpoint}/properties/${id}`);
+
 export const createPropertyFacility = async (data) => api.post(`${endpoint}/propertiesFacilities`, data);
 
 export const deletePropertyFacility = async (id) => api.del(`${endpoint}/propertiesFacilities/${id}`);
+
+export const deletePropertyFacilities = async (propertyId) => {
+    const propertyFacilitiesData = await api.get(`${endpoint}/propertiesFacilities?where=propertyId%3D%22${propertyId}%22&select=_id`);
+
+    const propertyFacilityIds = propertyFacilitiesData.map(pfd => pfd._id);
+    
+    for (const propertyFacilityId of propertyFacilityIds) {
+        await api.del(`${endpoint}/propertiesFacilities/${propertyFacilityId}`);
+    }
+}
