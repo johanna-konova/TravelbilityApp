@@ -5,9 +5,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Container, Form } from 'react-bootstrap';
 import toast from "react-hot-toast";
 
+import { usePropertyContext } from '../../../contexts/Property-Context';
+
 import { useBasicGetFetch } from '../../../hooks/use-basic-get-fetch';
 import * as propertyAPI from '../../../services/propertiesServices';
-import { usePropertyContext } from '../../../contexts/Property-Context';
 import { propertySchema } from '../../../validations';
 
 import PropertyCreateEditFormStepOne from './Property-Create-Edit-Form-Step-One';
@@ -19,8 +20,9 @@ import styles from './Property-Create-Edit-Form.module.css';
 export default function PropertyCreateEditForm() {
     const { data: propertyTypes } = useBasicGetFetch(() => propertyAPI.getPropertyTypes());
     const { data: facilities } = useBasicGetFetch(() => propertyAPI.getFacilities());
-    const { propertyData, propertyFacilities } = usePropertyContext();
 
+    const { propertyData, propertyFacilities } = usePropertyContext();
+    
     const [menualErrors, setMenualErrors] = useState({});
     const [step, setStep] = useState(1);
 
@@ -40,7 +42,7 @@ export default function PropertyCreateEditForm() {
     });
 
     useEffect(() => {
-        if (propertyData) {
+        if (propertyData._id !== undefined) {
             reset({
                 "id": propertyData._id,
                 "step-1": {
@@ -95,7 +97,7 @@ export default function PropertyCreateEditForm() {
         const propertyFacilitiesToDelete = propertyFacilities
             .filter(pf => facilityIds.includes(pf.facilityId) === false)
             .map(pf => pf.recordId);
-        
+
         for (const facilityId of facilityIds) {
             if (propertyFacilities.some(pf => pf.facilityId === facilityId) === false) {
                 await propertyAPI.createPropertyFacility({
