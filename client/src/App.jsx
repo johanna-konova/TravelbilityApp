@@ -18,6 +18,7 @@ import PropertyCreateEditForm from "./components/property/property-create-edit/P
 import Footer from "./components/Footer";
 import BackToTop from "./components/Back-To-Top";
 import PublisherGuard from "./components/common/Publisher-Guard";
+import NotFound from "./not-found/Not-Found";
 
 function App() {
     return (
@@ -56,6 +57,8 @@ function App() {
 
                         <Route path="/my-properties" element={<UserProperties />} />
                     </Route>
+                    
+                    <Route path="*" element={<NotFound />} />
 
                 </Routes>
 
