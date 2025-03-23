@@ -17,6 +17,7 @@ import UserProperties from "./components/properties/user-properties/User-Propert
 import PropertyCreateEditForm from "./components/property/property-create-edit/Property-Create-Edit-Form";
 import Footer from "./components/Footer";
 import BackToTop from "./components/Back-To-Top";
+import PublisherGuard from "./components/common/Publisher-Guard";
 
 function App() {
     return (
@@ -47,7 +48,9 @@ function App() {
 
                         <Route path="/edit/:propertyId" element={
                             <PropertyContextProvider>
-                                <PropertyCreateEditForm />
+                                <PublisherGuard>
+                                    <PropertyCreateEditForm />
+                                </PublisherGuard>
                             </PropertyContextProvider>
                         } />
 
