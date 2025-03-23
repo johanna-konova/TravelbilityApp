@@ -9,7 +9,7 @@ export default function AuthGuard() {
 
     useEffect(() => {
         if (!isAuthenticated) {
-            toast.error("You must be logged in to list you property.");
+            toast.error("You must be logged in to access that page.");
         }
     }, [isAuthenticated]);
 
