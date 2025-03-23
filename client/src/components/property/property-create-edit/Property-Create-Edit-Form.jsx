@@ -28,7 +28,7 @@ export default function PropertyCreateEditForm() {
 
     const navigate = useNavigate();
 
-    const { register, control, handleSubmit, trigger, formState: { errors }, reset, watch } = useForm({
+    const { register, control, handleSubmit, trigger, formState: { errors, isSubmitting }, reset, watch } = useForm({
         defaultValues: {
             "step-2": {
                 commonFacilityIds: [],
@@ -87,7 +87,7 @@ export default function PropertyCreateEditForm() {
             ...data["step-1"],
             imageUrls: data["step-3"].imageUrls.map(iu => iu.url)
         };
-
+        
         const savedPropertyData = data.id
             ? await propertyAPI.edit(data.id, propertyData)
             : await propertyAPI.create(propertyData);
@@ -149,6 +149,7 @@ export default function PropertyCreateEditForm() {
                     errors={{ ...errors["step-3"], ...menualErrors }}
                     updateMenualErrorsHandler={updateMenualErrorsHandler}
                     previousStepHandler={prevStep}
+                    isSaving={isSubmitting}
                 />}
             </Form>
         </Container>

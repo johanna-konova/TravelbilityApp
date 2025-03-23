@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button, Col, Row, Image } from 'react-bootstrap';
+import { Form, Button, Col, Row, Image, Spinner } from 'react-bootstrap';
 import { useFieldArray } from 'react-hook-form';
 
 import { imageUrlSchema } from '../../../validations';
@@ -10,7 +10,8 @@ export default function PropertyCreateEditFormStepThree({
     control,
     errors,
     updateMenualErrorsHandler,
-    previousStepHandler
+    previousStepHandler,
+    isSaving
 }) {
     const [currentImageUrl, setCurrentImageUrl] = useState('');
 
@@ -55,12 +56,13 @@ export default function PropertyCreateEditFormStepThree({
                                     type="text"
                                     placeholder="https://example.com/image.jpg"
                                     value={currentImageUrl}
+                                    disabled={isSaving}
                                     onChange={e => setCurrentImageUrl(e.target.value)}
                                 />
                             </Form.Group>
                         </Col>
                         <Col md={2} className="d-flex align-items-end">
-                            <Button variant="primary" className="m-0" onClick={uploadImageHandler}>
+                            <Button variant="primary" className="m-0" disabled={isSaving} onClick={uploadImageHandler}>
                                 Upload
                             </Button>
                         </Col>
@@ -86,6 +88,7 @@ export default function PropertyCreateEditFormStepThree({
                                         variant="light"
                                         size="sm"
                                         className={styles["close-button"]}
+                                        disabled={isSaving}
                                         onClick={() => remove(index)}
                                     >
                                         X
@@ -99,8 +102,21 @@ export default function PropertyCreateEditFormStepThree({
                 {errors.imageUrls && <p className="text-danger text-center">{errors.imageUrls.message}</p>}
 
                 <div className="d-flex justify-content-between mt-3">
-                    <Button type="button" onClick={previousStepHandler} className="me-2">Back</Button>
-                    <Button type="submit">Finish</Button>
+                    <Button type="button" className="me-2" disabled={isSaving} onClick={previousStepHandler}>Back</Button>
+                    <Button type="submit" disabled={isSaving}>
+                        {isSaving
+                            ? <>
+                                <Spinner
+                                    as="span"
+                                    animation="border"
+                                    size="sm"
+                                    role="status"
+                                    aria-hidden="true"
+                                />
+                                Saving...
+                            </>
+                            : <span>Save</span>
+                        }</Button>
                 </div>
             </Col>
         </Row>

@@ -6035,8 +6035,8 @@ a.close.disabled {
   border: 0.25em solid currentColor;
   border-right-color: transparent;
   border-radius: 50%;
-  margin-bottom: 3px;
-  margin-right: 3px;
+  margin-bottom: 4px;
+  margin-right: 4px;
   animation: spinner-border .75s linear infinite;
 }
 
