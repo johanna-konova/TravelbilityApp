@@ -26,9 +26,7 @@ export async function requester(method, url, body) {
             //auth.removeUserData();
         }
         
-        const errorResponse = await request.json();
-
-        throw new Error(errorResponse.message);
+        throw await request.json();
     }
 
     if (request.status !== 204) {
