@@ -1,4 +1,3 @@
-import React from "react";
 import { Container, Row, Col, Image, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -7,8 +6,8 @@ import FeaturesContainer from "./features/Features-Container";
 export default function OurMission() {
     return (
         <>
-            <Container fluid className="py-5">
-                <Container className="pt-5">
+            <Container fluid className="mt-5">
+                <Container>
                     <Row>
                         <Col lg={6} style={{ minHeight: 500 }}>
                             <div className="position-relative h-100">
@@ -32,7 +31,7 @@ export default function OurMission() {
                                     </Card.Title>
                                     <Card.Text>
                                         <div className="mb-3">
-                                            The travel is so much more than just moving from point A to point B – it"s a feeling of freedom, new horizons, and moments that fill the heart with joy. Everyone deserves the right to immerse themselves in the beauty of nature, feel the sea breeze, or find inspiration in new and unfamiliar places.
+                                            The travel is so much more than just moving from point A to point B – it is a feeling of freedom, new horizons, and moments that fill the heart with joy. Everyone deserves the right to immerse themselves in the beauty of nature, feel the sea breeze, or find inspiration in new and unfamiliar places.
                                         </div>
 
                                         <div className="mb-3">
