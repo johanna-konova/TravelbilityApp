@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Container, Row, Col, Card, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Card, Form, Button, Spinner } from 'react-bootstrap';
+import { useForm } from 'react-hook-form';
 
 import { useLogin } from '../../hooks/use-auth';
 
@@ -12,17 +12,17 @@ export default function LoginForm() {
     const location = useLocation();
     const { loginHandler } = useLogin();
     const [errorMessage, setErrorMessage] = useState(undefined);
-    const { register, handleSubmit, reset } = useForm();
+    const { register, handleSubmit, formState: { isSubmitting }, reset } = useForm();
 
     useEffect(() => {
         setErrorMessage(undefined);
         reset();
-    }, [location.key]);
+    }, [location.key, reset]);
 
     async function login(userData) {
         try {
             await loginHandler(userData);
-            navigate(-1);
+            navigate("/");
         } catch (error) {
             setErrorMessage(error.message)
         }
@@ -31,9 +31,9 @@ export default function LoginForm() {
     return (
         <>
             <Container className="text-center mt-3">
-                <h1 className="text-primary">
+                <h2 className="text-primary">
                     Log <span className="text-dark">in</span>
-                </h1>
+                </h2>
                 <Row className={styles["auth-container"]}>
                     <Col lg={7}>
                         <Card className="border-0">
@@ -48,6 +48,7 @@ export default function LoginForm() {
                                         <Form.Control
                                             type="email"
                                             placeholder="Ex.: john.doe@mail.com"
+                                            disabled={isSubmitting}
                                             {...register('email')}
                                         />
                                     </Form.Group>
@@ -57,17 +58,31 @@ export default function LoginForm() {
                                         <Form.Control
                                             type="password"
                                             placeholder="********"
+                                            disabled={isSubmitting}
                                             {...register('password')}
                                         />
                                     </Form.Group>
 
-                                    <Button variant="primary" type="submit" className={`${styles["submit-text"]} btn-block py-3`}>
-                                        Log in
-                                    </Button>
+                                    <Button variant="primary" type="submit" className={`${styles["submit-text"]} btn-block py-3`} disabled={isSubmitting}>
+                                        {isSubmitting
+                                            ? <>
+                                                <Spinner
+                                                    as="span"
+                                                    animation="border"
+                                                    size="sm"
+                                                    role="status"
+                                                    aria-hidden="true"
+                                                />
+                                                Logging in...
+                                            </>
+                                            : <span>Log in</span>
+                                        }</Button>
                                 </Form>
-                                <p className="text-center mt-3">
-                                    New in Travelbility? <Link to="/register">Sign up now</Link>
-                                </p>
+                                {!isSubmitting &&
+                                    <p className="text-center mt-3">
+                                        New in Travelbility? <Link to="/register">Sign up now</Link>
+                                    </p>
+                                }
                             </Card.Body>
                         </Card>
                     </Col>
