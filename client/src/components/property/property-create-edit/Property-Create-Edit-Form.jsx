@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -15,15 +15,16 @@ import { constructPropertyDataForEditing } from '../../../utils/property-utils';
 import PropertyCreateEditFormStepOne from './Property-Create-Edit-Form-Step-One';
 import PropertyCreateEditFormStepTwo from './Property-Create-Edit-Form-Step-Two';
 import PropertyCreateEditFormStepThree from './Property-Create-Edit-Form-Step-Three';
+import WheelchairTireSpinner from '../../loaders/Wheelcheir-Tire-Spinner';
 
 import styles from './Property-Create-Edit-Form.module.css';
 
 export default function PropertyCreateEditForm() {
-    const { data: propertyTypes } = useBasicGetFetch(() => propertyAPI.getPropertyTypes());
+    const { data: propertyTypes, isDataLoaded: isPropertyTypesLoaded } = useBasicGetFetch(() => propertyAPI.getPropertyTypes());
     const { data: facilities } = useBasicGetFetch(() => propertyAPI.getFacilities());
 
     const { propertyData, propertyFacilities } = usePropertyContext();
-    
+
     const [menualErrors, setMenualErrors] = useState({});
     const [step, setStep] = useState(1);
 
@@ -45,7 +46,7 @@ export default function PropertyCreateEditForm() {
         if (propertyData._id !== undefined) {
             reset(constructPropertyDataForEditing(propertyData, propertyFacilities));
         }
-    }, [propertyData]);
+    }, [propertyData, propertyFacilities, reset]);
 
     const updateMenualErrorsHandler = (errors) =>
         setMenualErrors(previousMenualErrors => ({ ...previousMenualErrors, ...errors }));
@@ -65,7 +66,7 @@ export default function PropertyCreateEditForm() {
             ...data["step-1"],
             imageUrls: data["step-3"].imageUrls.map(iu => iu.url)
         };
-        
+
         const savedPropertyData = data.id
             ? await propertyAPI.edit(data.id, propertyData)
             : await propertyAPI.create(propertyData);
@@ -95,41 +96,45 @@ export default function PropertyCreateEditForm() {
 
     return (
         <Container className="mt-3">
-            <h1 className="text-center">List you property</h1>
-            <Form onSubmit={handleSubmit(createHandler)}>
+            {isPropertyTypesLoaded
+                ? <Form onSubmit={handleSubmit(createHandler)}>
 
-                <div className={styles["list-property-nav"]}>
-                    <span><i className="fas fa-hotel text-primary"></i> Basic information</span>
-                    <span><i className="fab fa-accessible-icon text-primary"></i> Facilities</span>
-                    <span><i className="far fa-images text-primary"></i> Photos</span>
-                </div>
+                    <div className="d-flex justify-content-center">
+                        <div className={styles["list-property-nav"]}>
+                            <span><i className="fas fa-hotel text-primary"></i> Basic information</span>
+                            <span><i className="fab fa-accessible-icon text-primary"></i> Facilities</span>
+                            <span><i className="far fa-images text-primary"></i> Photos</span>
+                        </div>
+                    </div>
 
-                <input type="hidden" {...register("id")} />
+                    <input type="hidden" {...register("id")} />
 
-                {step === 1 && <PropertyCreateEditFormStepOne
-                    propertyTypes={propertyTypes}
-                    register={register}
-                    errors={errors["step-1"]}
-                    nextStepHandler={nextStep}
-                />}
+                    {step === 1 && <PropertyCreateEditFormStepOne
+                        propertyTypes={propertyTypes}
+                        register={register}
+                        errors={errors["step-1"]}
+                        nextStepHandler={nextStep}
+                    />}
 
-                {step === 2 && <PropertyCreateEditFormStepTwo
-                    facilities={facilities}
-                    watch={watch}
-                    register={register}
-                    errors={errors["step-2"]}
-                    previousStepHandler={prevStep}
-                    nextStepHandler={nextStep}
-                />}
+                    {step === 2 && <PropertyCreateEditFormStepTwo
+                        facilities={facilities}
+                        watch={watch}
+                        register={register}
+                        errors={errors["step-2"]}
+                        previousStepHandler={prevStep}
+                        nextStepHandler={nextStep}
+                    />}
 
-                {step === 3 && <PropertyCreateEditFormStepThree
-                    control={control}
-                    errors={{ ...errors["step-3"], ...menualErrors }}
-                    updateMenualErrorsHandler={updateMenualErrorsHandler}
-                    previousStepHandler={prevStep}
-                    isSaving={isSubmitting}
-                />}
-            </Form>
+                    {step === 3 && <PropertyCreateEditFormStepThree
+                        control={control}
+                        errors={{ ...errors["step-3"], ...menualErrors }}
+                        updateMenualErrorsHandler={updateMenualErrorsHandler}
+                        previousStepHandler={prevStep}
+                        isSaving={isSubmitting}
+                    />}
+                </Form>
+                : <WheelchairTireSpinner />
+            }
         </Container>
     );
 };

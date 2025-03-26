@@ -16,7 +16,7 @@ export default function PublisherGuard({ children }) {
             toast.error("You can only edit the properties you have published.");
             setHasRedirect(true);
         }
-    }, [propertyData]);
+    }, [id, propertyData]);
 
     if (hasRedirect) {
         return <Navigate to="/my-properties" replace />;
