@@ -4,7 +4,7 @@ import { useAuthContext } from "../../../contexts/Auth-Context";
 import { PropertiesContext } from "../../../contexts/Properties-Context";
 
 import { useBasicGetFetch } from "../../../hooks/use-basic-get-fetch";
-import { getThreeNewestAdded } from "../../../services/propertiesServices";
+import { getThreeNewestAdded } from "../../../services/propertiesService";
 
 import SingeNewestAddedPropertyContainer from "./Single-Neweset-Added-Property-Container";
 import { WheelchairTireSpinner } from "../../loaders/Loaders";

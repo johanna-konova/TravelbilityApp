@@ -7,7 +7,9 @@ import { FiltersContext } from '../../../contexts/Filters-Context';
 import { PropertiesContext } from '../../../contexts/Properties-Context';
 
 import { useBasicGetFetch } from '../../../hooks/use-basic-get-fetch';
-import { getAll, getFacilities, getPropertyTypes } from '../../../services/propertiesServices';
+import { getAll } from '../../../services/propertiesFacilitiesService';
+import { getAll as getPropertyTypes } from '../../../services/typesServices';
+import { getFacilities } from '../../../services/facilitiesService';
 
 import FiltersContainer from '../filters/Filters-Container';
 import PropertyShortListView from './Property-Short-List-View';

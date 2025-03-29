@@ -4,7 +4,7 @@ import { useAuthContext } from '../../../contexts/Auth-Context';
 import { PropertiesContext } from '../../../contexts/Properties-Context';
 
 import { useBasicGetFetch } from '../../../hooks/use-basic-get-fetch';
-import { getByOwnerId } from '../../../services/propertiesServices';
+import { getByOwnerId } from '../../../services/propertiesService';
 
 import NoProperties from './No-Properties';
 import UserPropertiesContainer from './User-Properties-Container';

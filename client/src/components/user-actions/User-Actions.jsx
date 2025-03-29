@@ -5,7 +5,8 @@ import toast from "react-hot-toast";
 
 import { usePropertiesContext } from '../../contexts/Properties-Context';
 
-import { deleteById, deletePropertyFacilities } from '../../services/propertiesServices';
+import { deleteById } from '../../services/propertiesService';
+import { deletePropertyFacilities } from '../../services/propertiesFacilitiesService';
 
 import DeleteModal from '../modals/Delete-Modal';
 
@@ -31,6 +32,7 @@ export default function UserActions({
                 ? navigate(-1)
                 : deletePropertyByIdHandler(id);
             toast.success("You have successfully deleted the property.");
+        // eslint-disable-next-line no-unused-vars
         } catch (error) {
             toast.error("An unexpected error occurred. Please try again or contact us.");
         } finally {

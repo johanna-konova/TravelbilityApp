@@ -3,7 +3,7 @@ import { Card } from "react-bootstrap";
 import { List } from "react-content-loader";
 
 import { useBasicGetFetch } from "../../../hooks/use-basic-get-fetch";
-import { getPropertyAccessibilityById } from "../../../services/propertiesServices";
+import { getPropertyAccessibilityById } from "../../../services/propertiesFacilitiesService";
 import { generateStarIcons } from "../../../utils/property-utils";
 
 import UserActions from "../../user-actions/User-Actions";

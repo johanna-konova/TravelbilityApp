@@ -1,5 +1,5 @@
 import { useBasicGetFetch } from "../../../hooks/use-basic-get-fetch";
-import { getAccessibility } from "../../../services/propertiesServices";
+import { getAccessibility } from "../../../services/facilitiesService";
 
 import SingleAccessibilityConteiner from "./Single-Accessibility-Container";
 import { WheelchairTireSpinner } from "../../loaders/Loaders";

@@ -8,7 +8,10 @@ import toast from "react-hot-toast";
 import { usePropertyContext } from '../../../contexts/Property-Context';
 
 import { useBasicGetFetch } from '../../../hooks/use-basic-get-fetch';
-import * as propertyAPI from '../../../services/propertiesServices';
+import { getAll as getPropertyTypes } from '../../../services/typesServices';
+import { getFacilities } from '../../../services/facilitiesService';
+import { create, edit } from '../../../services/propertiesService';
+import { createPropertyFacility, deletePropertyFacility } from '../../../services/propertiesFacilitiesService';
 import { propertySchema } from '../../../validations';
 import { constructPropertyDataForEditing } from '../../../utils/property-utils';
 
@@ -20,8 +23,8 @@ import { WheelchairTireSpinner } from '../../loaders/Loaders';
 import styles from './Property-Create-Edit-Form.module.css';
 
 export default function PropertyCreateEditForm() {
-    const { data: propertyTypes, isDataLoaded: isPropertyTypesLoaded } = useBasicGetFetch(() => propertyAPI.getPropertyTypes());
-    const { data: facilities } = useBasicGetFetch(() => propertyAPI.getFacilities());
+    const { data: propertyTypes, isDataLoaded: isPropertyTypesLoaded } = useBasicGetFetch(() => getPropertyTypes());
+    const { data: facilities } = useBasicGetFetch(() => getFacilities());
 
     const { propertyData, propertyFacilities } = usePropertyContext();
 
@@ -68,8 +71,8 @@ export default function PropertyCreateEditForm() {
         };
 
         const savedPropertyData = data.id
-            ? await propertyAPI.edit(data.id, propertyData)
-            : await propertyAPI.create(propertyData);
+            ? await edit(data.id, propertyData)
+            : await create(propertyData);
 
         const facilityIds = [...data["step-2"].commonFacilityIds, ...data["step-2"].accessibilityIds];
 
@@ -79,7 +82,7 @@ export default function PropertyCreateEditForm() {
 
         for (const facilityId of facilityIds) {
             if (propertyFacilities.some(pf => pf.facilityId === facilityId) === false) {
-                await propertyAPI.createPropertyFacility({
+                await createPropertyFacility({
                     propertyId: savedPropertyData._id,
                     facilityId
                 });
@@ -87,7 +90,7 @@ export default function PropertyCreateEditForm() {
         }
 
         for (const propertyFacilityToDelete of propertyFacilitiesToDelete) {
-            await propertyAPI.deletePropertyFacility(propertyFacilityToDelete);
+            await deletePropertyFacility(propertyFacilityToDelete);
         }
 
         toast.success(`You have successfully ${data.id === undefined ? "listed" : "edited"} your property.`);

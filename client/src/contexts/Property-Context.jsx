@@ -1,7 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { getById, getPropertyFacilities } from "../services/propertiesServices";
+import { getById } from "../services/propertiesService";
+import { getPropertyFacilities } from "../services/propertiesFacilitiesService";
 
 export const PropertyContext = createContext({
     propertyId: '',
