@@ -1,4 +1,3 @@
-import React from 'react';
 import { Container } from 'react-bootstrap';
 
 import { useAuthContext } from '../../../contexts/Auth-Context';
@@ -9,7 +8,7 @@ import { getByOwnerId } from '../../../services/propertiesServices';
 
 import NoProperties from './No-Properties';
 import UserPropertiesContainer from './User-Properties-Container';
-import WheelchairTireSpinner from '../../loaders/Wheelcheir-Tire-Spinner';
+import { WheelchairTireSpinner } from '../../loaders/Loaders';
 
 export default function UserProperties() {
     const { id } = useAuthContext();

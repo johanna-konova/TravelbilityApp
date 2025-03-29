@@ -15,7 +15,7 @@ import { constructPropertyDataForEditing } from '../../../utils/property-utils';
 import PropertyCreateEditFormStepOne from './Property-Create-Edit-Form-Step-One';
 import PropertyCreateEditFormStepTwo from './Property-Create-Edit-Form-Step-Two';
 import PropertyCreateEditFormStepThree from './Property-Create-Edit-Form-Step-Three';
-import WheelchairTireSpinner from '../../loaders/Wheelcheir-Tire-Spinner';
+import { WheelchairTireSpinner } from '../../loaders/Loaders';
 
 import styles from './Property-Create-Edit-Form.module.css';
 

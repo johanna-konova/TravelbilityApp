@@ -7,7 +7,7 @@ import PublisherGuard from "./components/common/Publisher-Guard";
 import AuthContextProvider from "./contexts/Auth-Context";
 import PropertyContextProvider from "./contexts/Property-Context";
 
-import Topbar from "./components/Topbar";
+import Topbar from "./components/topbar/Topbar";
 import Navbar from "./components/Navbar";
 import Home from "./components/home/Home";
 import LoginForm from "./components/auth-forms/Login-Form";

@@ -2,7 +2,7 @@ import { useBasicGetFetch } from "../../../hooks/use-basic-get-fetch";
 import { getAccessibility } from "../../../services/propertiesServices";
 
 import SingleAccessibilityConteiner from "./Single-Accessibility-Container";
-import WheelchairTireSpinner from "../../loaders/Wheelcheir-Tire-Spinner";
+import { WheelchairTireSpinner } from "../../loaders/Loaders";
 
 import styles from "../Home.module.css";
 

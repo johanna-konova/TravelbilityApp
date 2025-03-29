@@ -1,4 +1,3 @@
-import React from 'react';
 import { Container } from 'react-bootstrap';
 
 import { usePropertyContext } from '../../../contexts/Property-Context';
@@ -7,7 +6,7 @@ import { useAuthContext } from '../../../contexts/Auth-Context';
 import PropertyDetailsImages from './Property-Details-Images';
 import UserActions from '../../user-actions/User-Actions';
 import PropertyDetails from './Property-Details';
-import WheelchairTireSpinner from '../../loaders/Wheelcheir-Tire-Spinner';
+import { WheelchairTireSpinner } from '../../loaders/Loaders';
 
 export default function PropertyDetailsContainer() {
     const { propertyData, propertyFacilities, isPropertyDataLoaded } = usePropertyContext();

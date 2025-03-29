@@ -2,10 +2,7 @@ import { Container, Row } from "react-bootstrap";
 
 import PropertyShortGridView from "./Property-Short-Grid-View";
 
-export default function UserPropertiesContainer({
-    propertiesDataByOwnerId,
-    deletePropertyByIdHandler
-}) {
+export default function UserPropertiesContainer({ propertiesDataByOwnerId }) {
     return (
         <>
             <Container>

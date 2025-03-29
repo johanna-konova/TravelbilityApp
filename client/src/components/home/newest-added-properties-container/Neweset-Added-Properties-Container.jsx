@@ -7,7 +7,7 @@ import { useBasicGetFetch } from "../../../hooks/use-basic-get-fetch";
 import { getThreeNewestAdded } from "../../../services/propertiesServices";
 
 import SingeNewestAddedPropertyContainer from "./Single-Neweset-Added-Property-Container";
-import WheelchairTireSpinner from "../../loaders/Wheelcheir-Tire-Spinner";
+import { WheelchairTireSpinner } from "../../loaders/Loaders";
 
 import styles from "../Home.module.css";
 
