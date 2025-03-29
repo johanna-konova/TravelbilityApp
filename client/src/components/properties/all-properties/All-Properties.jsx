@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 
 import { useAuthContext } from '../../../contexts/Auth-Context';
+import { FiltersContext } from '../../../contexts/Filters-Context';
 import { PropertiesContext } from '../../../contexts/Properties-Context';
 
 import { useBasicGetFetch } from '../../../hooks/use-basic-get-fetch';
@@ -10,7 +11,7 @@ import { getAll, getFacilities, getPropertyTypes } from '../../../services/prope
 
 import FiltersContainer from '../filters/Filters-Container';
 import PropertyShortListView from './Property-Short-List-View';
-import WheelchairTireSpinner from '../../loaders/Wheelcheir-Tire-Spinner';
+import { WheelchairTireSpinner } from '../../loaders/Loaders';
 
 import styles from './All-Properties.module.css';
 
@@ -23,7 +24,7 @@ export default function AllProperties() {
 
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
-    
+
     const { id } = useAuthContext();
 
     const searchParamsEntries = Object.fromEntries(searchParams);
@@ -35,7 +36,7 @@ export default function AllProperties() {
 
     const {
         data: propertyTypes,
-        isDataLoaded: isPropertyTypesLoaded } = useBasicGetFetch(() => getPropertyTypes());
+        isDataLoaded: arePropertyTypesLoaded } = useBasicGetFetch(() => getPropertyTypes());
 
     const {
         data: facilities,
@@ -68,12 +69,17 @@ export default function AllProperties() {
 
     return (
         <Container className="mt-5 d-flex">
-            <FiltersContainer
-                propertyTypes={propertyTypes}
-                facilities={facilities}
-                filters={filters}
-                filtersHandler={setFiltersHandler}
-            />
+            <FiltersContext.Provider value={{
+                propertyTypes,
+                arePropertyTypesLoaded,
+                facilities,
+                areFacilitiesLoaded,
+                filters,
+                isPropertiesDataLoaded,
+                filterHandler: setFiltersHandler }}
+            >
+                <FiltersContainer />
+            </FiltersContext.Provider>
 
             <div className={styles["properties-container"]}>
                 <div className={styles["found"]}>
@@ -88,7 +94,7 @@ export default function AllProperties() {
                                 isLoggedInUserPropertyDataCreator={id === pd._ownerId}
                             />
                         )}
-                      </PropertiesContext.Provider>
+                    </PropertiesContext.Provider>
                     : <WheelchairTireSpinner style={{ minHeight: "calc(100vh - 270px)" }} />
                 }
             </div>

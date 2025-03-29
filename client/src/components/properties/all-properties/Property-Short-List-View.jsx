@@ -1,12 +1,14 @@
-import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { Card } from "react-bootstrap";
+import { List } from "react-content-loader";
 
 import { useBasicGetFetch } from "../../../hooks/use-basic-get-fetch";
 import { getPropertyAccessibilityById } from "../../../services/propertiesServices";
 import { generateStarIcons } from "../../../utils/property-utils";
 
-import styles from './All-Properties.module.css';
 import UserActions from "../../user-actions/User-Actions";
+
+import styles from './All-Properties.module.css';
 
 export default function PropertyShortListView({
     _id,
@@ -38,11 +40,14 @@ export default function PropertyShortListView({
                 <div className="mt-3">
                     <i className="fab fa-accessible-icon text-primary"></i> <span className="text-primary">Accessibility:</span>
                     <div className="ml-3">
-                        {propertyAccessibility.map((pa, i) =>
-                            <div key={i}>
-                                <i className="fas fa-check text-primary"></i> <span>{pa}, </span>
-                            </div>
-                        )}
+                        {isPropertyAccessibilityLoaded
+                            ? propertyAccessibility.map((pa, i) =>
+                                <div key={i}>
+                                    <i className="fas fa-check text-primary"></i> <span>{pa}, </span>
+                                </div>
+                            )
+                            : <List />
+                        }
                     </div>
                 </div>
 

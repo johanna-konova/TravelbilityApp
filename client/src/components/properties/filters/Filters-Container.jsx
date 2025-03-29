@@ -1,43 +1,40 @@
+import { useFiltersContext } from "../../../contexts/Filters-Context";
+
 import Filter from "./Filter";
 
 import styles from './../all-properties/All-Properties.module.css';
 
-export default function FiltersContainer({
-    propertyTypes,
-    facilities,
-    filters,
-    filtersHandler
-}) {
+export default function FiltersContainer() {
+    const { propertyTypes, arePropertyTypesLoaded, facilities, areFacilitiesLoaded, filters } = useFiltersContext();
+
     return (
-        <>
-            <div className={styles["filters-container"]}>
+        <div className={styles["filters-container"]}>
 
-                <div className={styles["filter-by"]}>Filter by:</div>
+            <div className={styles["filter-by"]}>Filter by:</div>
 
-                <Filter
-                    filterLabel="Property types"
-                    filterName="propertyTypeIds"
-                    filter={propertyTypes}
-                    selectedFilterIds={filters["propertyTypeIds"]}
-                    filtersHandler={filtersHandler}
-                />
+            <Filter
+                filterLabel="Property types"
+                filterName="propertyTypeIds"
+                filter={propertyTypes}
+                isFilterLoaded={arePropertyTypesLoaded}
+                selectedFilterIds={filters["propertyTypeIds"]}
+            />
 
-                <Filter
-                    filterLabel="Facilities"
-                    filterName="facilityIds"
-                    filter={facilities.filter(f => f.IsForAccessibility === false)}
-                    selectedFilterIds={filters["facilityIds"]}
-                    filtersHandler={filtersHandler}
-                />
+            <Filter
+                filterLabel="Facilities"
+                filterName="facilityIds"
+                filter={facilities.filter(f => f.IsForAccessibility === false)}
+                isFilterLoaded={areFacilitiesLoaded}
+                selectedFilterIds={filters["facilityIds"]}
+            />
 
-                <Filter
-                    filterLabel="Accessibility"
-                    filterName="accessibilityIds"
-                    filter={facilities.filter(f => f.IsForAccessibility)}
-                    selectedFilterIds={filters["accessibilityIds"]}
-                    filtersHandler={filtersHandler}
-                />
-            </div>
-        </>
+            <Filter
+                filterLabel="Accessibility"
+                filterName="accessibilityIds"
+                filter={facilities.filter(f => f.IsForAccessibility)}
+                isFilterLoaded={areFacilitiesLoaded}
+                selectedFilterIds={filters["accessibilityIds"]}
+            />
+        </div>
     )
 };
