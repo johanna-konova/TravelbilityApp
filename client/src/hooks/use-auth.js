@@ -1,11 +1,18 @@
-import { login, logout, register } from "../services/usersServices";
 import { useAuthContext } from "../contexts/Auth-Context";
+
+import * as api from '../services/api';
+
+const endpoints = {
+    REGISTER: 'users/register',
+    LOGIN: 'users/login',
+    LOGOUT: 'users/logout'
+};
 
 export function useLogin() {
     const { changeLoggedInUserData } = useAuthContext();
 
     const loginHandler = async (userData) => {
-        const response = await login(userData);
+        const response = await api.post(endpoints.LOGIN, userData);
         changeLoggedInUserData(response);
     }
     
@@ -16,7 +23,7 @@ export function useRegister() {
     const { changeLoggedInUserData } = useAuthContext();
 
     const registerHandler = async (userData) => {
-        const response = await register(userData);
+        const response = await api.post(endpoints.REGISTER, userData);
         changeLoggedInUserData(response);
     }
     
@@ -27,7 +34,7 @@ export function useLogout() {
     const { changeLoggedInUserData } = useAuthContext();
 
     const logoutHandler = async () => {
-        await logout();
+        await api.get(endpoints.LOGOUT);
         changeLoggedInUserData({});
     }
     
