@@ -1,51 +1,51 @@
 # TravelbilityApp
 
-**TravelbilityApp** е студентски проект, който улеснява намирането на обекти за настаняване, със специален фокус върху хора с увреждания.
+**TravelbilityApp** is a student project designed to simplify finding accommodation with a special focus on people with disabilities.
 
-## Описание
+## Description
 
-В **TravelbilityApp** потребителите ще могат да се регистрират и след регистрацията ще имат възможността да:
-- Публикуват обекти за настаняване, като включват подробности за достъпността и предлаганите услуги;
-- Редактират и изтриват обектите, които са публикували.
+In **TravelbilityApp**, users will be able to register and, after registration, they will be able to:
+- Post accommodation properties, including details about accessibility and available services;
+- Edit and delete the properties they have posted.
 
-Всички посетители на сайта ще могат да:
-- Разглеждат вече публикуваните обекти за настаняване;
-- Филтрират обектите по различни критерии като тип, услуги и достъпност.
+All site visitors will be able to:
+- Browse the already posted accommodation properties;
+- Filter the properties by various criteria such as type, services, and accessibility.
 
-## Съдържание
+## Content
 
-**TravelbilityApp** има публична и частна част.
+**TravelbilityApp** has a public and private part.
 
-### Публична част
-- **Topbar** – линкове за регистрация ("Sign up"), влизане ("Log in") и добавяне на обект ("List your property");
-- **Навигация** – лого и линкове към страниците за обекти за настаняване, нашата мисия и контакт;
-- **Начална страница**, включваща секции за "Explore the newest added" и "Find a property according to your needs";
-- Страници за вход и регистрация на потребители;
-- Страница с всички обекти за настаняване и филтриране по 3 основни категории;
-- Страница с детайли за всеки обект.
+### Public Part
+- **Topbar** – links for registration ("Sign up"), login ("Log in"), and property listing ("List your property");
+- **Navigation** – logo and links to pages for accommodation properties, our mission, and contact;
+- **Homepage**, featuring sections for "Explore the newest added" and "Find a property according to your needs";
+- Pages for user login and registration;
+- A page with all accommodation properties and filters by 3 main categories;
+- A page with detailed information for each property.
 
-### Частна част
-- **Topbar** – линкове за управление на обекти ("Manage my properties"), излизане ("Sign out") и добавяне на нов обект ("List your property");
-- Страница с обекти, публикувани от текущия влязъл потребител;
-- Страници с форми за добавяне и редактиране на обекти.
+### Private Part
+- **Topbar** – links for managing properties ("Manage my properties"), logging out ("Sign out"), and adding a new property ("List your property");
+- A page with properties posted by the currently logged-in user;
+- Pages with forms for adding and editing properties.
 
-## Структура на проекта
+## Project Structure
 
-Проектът е разделен на две основни части:
+The project is divided into two main parts:
 
-- **Client (Клиентска част)**: Интерфейс на приложението, разработен с ReactJS, JavaScript HTML И CSS;
-- **Server (Сървърна част)**: Използван [softuni-practice-server](https://github.com/softuni-practice-server/softuni-practice-server)
+- **Client**: The front-end interface of the application, developed with ReactJS, JavaScript, HTML, and CSS;
+- **Server**: Uses the [softuni-practice-server](https://github.com/softuni-practice-server/softuni-practice-server)
 
-## Инструкции за стартиране на проекта
+## Instructions for Running the Project
 
-### Изисквания
+### Requirements
 
 - [Node.js](https://nodejs.org/)
-- [npm](https://www.npmjs.com/) или [yarn](https://yarnpkg.com/)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
 
-### Как да стартирате проекта локално
+### How to Run the Project Locally
 
-1. Клонирайте репозиторито:
+1. Clone the repository:
    ```bash
    git clone https://github.com/johanna-konova/TravelbilityApp.git
    cd TravelbilityApp
