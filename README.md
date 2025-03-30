@@ -36,3 +36,35 @@
 - **Client (Клиентска част)**: Интерфейс на приложението, разработен с ReactJS, JavaScript HTML И CSS;
 - **Server (Сървърна част)**: Използван [softuni-practice-server](https://github.com/softuni-practice-server/softuni-practice-server)
 
+## Инструкции за стартиране на проекта
+
+### Изисквания
+
+- [Node.js](https://nodejs.org/)
+- [npm](https://www.npmjs.com/) или [yarn](https://yarnpkg.com/)
+
+### Как да стартирате проекта локално
+
+1. Клонирайте репозиторито:
+   ```bash
+   git clone https://github.com/johanna-konova/TravelbilityApp.git
+   cd TravelbilityApp
+   ```
+   
+2. Инсталирайте зависимостите за клиентската част:
+   ```bash
+   cd client
+   npm install
+   ```
+
+3. Стартирайте сървъра:
+   ```bash
+   cd server
+   node server.js
+   ```
+
+4. Отворете клиентската част в браузър:
+   ```bash
+   cd client
+   npm run dev
+   ```
