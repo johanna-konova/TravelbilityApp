@@ -33,5 +33,6 @@
 
 Проектът е разделен на две основни части:
 
-- **Client (Клиентска част)**: Интерфейс на приложението, разработен с HTML, CSS и JavaScript (и потенциално допълнителни библиотеки като React);
-- **Server (Сървърна част)**: 
+- **Client (Клиентска част)**: Интерфейс на приложението, разработен с ReactJS, JavaScript HTML И CSS;
+- **Server (Сървърна част)**: Използван [softuni-practice-server](https://github.com/softuni-practice-server/softuni-practice-server)
+
