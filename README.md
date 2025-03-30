@@ -69,6 +69,11 @@
    npm run dev
    ```
 
+Проектът е инициализиран с трима потребители, които могат да се използват за незабавно тестване:
+- peter@abv.bg : 123456
+- george@abv.bg : 123456
+- admin@abv.bg : admin
+
 ### Проектът можe да бъде достъпен и от тук - [Travelbility - Travel Without Limits!](https://travelbility-23caa.web.app)
 
 ## Използван css template - [TRAVELER Free CSS Template](https://www.free-css.com/free-css-templates/page281/traveler)
