@@ -79,5 +79,5 @@ The project is initialized with three test users, which can be used for immediat
 ## Used CSS Template
 [TRAVELER Free CSS Template](https://www.free-css.com/free-css-templates/page281/traveler)
 
-## Лиценз
-Този проект е с лиценз **MIT**. За подробности, моля, вижте [LICENSE](LICENSE) файлът.
+## License
+This project is licensed under the **MIT** License. For more details, please refer to the [LICENSE](LICENSE) file.
