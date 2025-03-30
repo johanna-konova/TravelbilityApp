@@ -76,4 +76,8 @@
 
 ### Проектът можe да бъде достъпен и от тук - [Travelbility - Travel Without Limits!](https://travelbility-23caa.web.app)
 
-## Използван css template - [TRAVELER Free CSS Template](https://www.free-css.com/free-css-templates/page281/traveler)
+## Използван css template
+[TRAVELER Free CSS Template](https://www.free-css.com/free-css-templates/page281/traveler)
+
+## Лиценз
+Този проект е с лиценз **MIT**. За подробности, моля, вижте [LICENSE](LICENSE) файлът.
