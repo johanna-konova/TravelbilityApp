@@ -51,32 +51,32 @@ The project is divided into two main parts:
    cd TravelbilityApp
    ```
    
-2. Инсталирайте зависимостите за клиентската част:
+2. Install dependencies for the client side:
    ```bash
    cd client
    npm install
    ```
 
-3. Стартирайте сървъра:
+3. Start the server:
    ```bash
    cd server
    node server.js
    ```
 
-4. Отворете клиентската част в браузър:
+4. Open the client side in your browser:
    ```bash
    cd client
    npm run dev
    ```
 
-Проектът е инициализиран с трима потребители, които могат да се използват за незабавно тестване:
+The project is initialized with three test users, which can be used for immediate testing:
 - peter@abv.bg : 123456
 - george@abv.bg : 123456
 - admin@abv.bg : admin
 
-### Проектът можe да бъде достъпен и от тук - [Travelbility - Travel Without Limits!](https://travelbility-23caa.web.app)
+### The project can also be accessed here - [Travelbility - Travel Without Limits!](https://travelbility-23caa.web.app)
 
-## Използван css template
+## Used CSS Template
 [TRAVELER Free CSS Template](https://www.free-css.com/free-css-templates/page281/traveler)
 
 ## Лиценз
