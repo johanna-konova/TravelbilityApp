@@ -34,8 +34,14 @@ export function useLogout() {
     const { changeLoggedInUserData } = useAuthContext();
 
     const logoutHandler = async () => {
-        await api.get(endpoints.LOGOUT);
-        changeLoggedInUserData({});
+        try {
+            await api.get(endpoints.LOGOUT);
+            changeLoggedInUserData({});
+        } catch (error) {
+            if (error.code === 403) {
+                changeLoggedInUserData({});
+            }
+        }
     }
     
     return { logoutHandler };
