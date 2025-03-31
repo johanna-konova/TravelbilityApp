@@ -129,6 +129,11 @@ button {
     margin: 0;
 }
 
+.properties-container .accessibility-container {
+    min-height: 90px;
+    margin-top: 1rem;
+}
+
 /* Основен стил за checkbox */
 .custom-checkbox {
     width: fit-content;
